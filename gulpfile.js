@@ -38,23 +38,23 @@ gulp.task("eslint:nofail", () => {
 		.pipe(eslint.format())
 })
 
-gulp.task("🧹 clean:build", cb => {
+gulp.task("🧹 clean:build", (cb) => {
 	del(`${BUILD}`).then(
 		() => {
 			cb()
 		},
-		reason => {
+		(reason) => {
 			cb(reason)
 		}
 	)
 })
 
-gulp.task("🧹 clean:dist", cb => {
+gulp.task("🧹 clean:dist", (cb) => {
 	del(`${DIST}`).then(
 		() => {
 			cb()
 		},
-		reason => {
+		(reason) => {
 			cb(reason)
 		}
 	)
@@ -70,7 +70,7 @@ gulp.task("💾 copy:build", () => {
 			`${SRC}/**/*.html`,
 			`${SRC}/**/*.css`,
 			`${SRC}/**/./img/**/*`,
-			`!${SRC}/app/themes/**/*`
+			`!${SRC}/app/themes/**/*`,
 		])
 		.pipe(gulp.dest(`${BUILD}`))
 })
@@ -80,7 +80,7 @@ gulp.task("🤺 less", () => {
 		.src([`${SRC}/**/*.less`, `!${SRC}/**/colors.less`])
 		.pipe(
 			less({
-				paths: [path.join(__dirname, "less", "includes")]
+				paths: [path.join(__dirname, "less", "includes")],
 			})
 		)
 		.pipe(gulp.dest(`${SRC}`))
@@ -96,13 +96,13 @@ gulp.task("preload:main", () => {
 				gulpif(
 					"**/*.xml",
 					prettydata({
-						type: "minify"
+						type: "prettify",
 					})
 				)
 			)
 			.pipe(
 				ui5Preload({
-					prefix: `${APPNAMESPACE}`
+					prefix: `${APPNAMESPACE}`,
 				})
 			)
 			//.pipe(replace("yelcho/dp/app/", "yelcho/dp/"))
@@ -111,7 +111,7 @@ gulp.task("preload:main", () => {
 })
 
 function getFolders(dir) {
-	return fs.readdirSync(dir).filter(function(file) {
+	return fs.readdirSync(dir).filter(function (file) {
 		return fs.statSync(path.join(dir, file)).isDirectory()
 	})
 }
@@ -119,7 +119,7 @@ function getFolders(dir) {
 function buildReuseComponents(done) {
 	const reuseList = getFolders(`${BUILD}/${REUSE}`)
 
-	const tasks = reuseList.map(reuseComponent => {
+	const tasks = reuseList.map((reuseComponent) => {
 		// Right here, we return a function per folder
 		const buildPreload = () =>
 			gulp
@@ -130,13 +130,13 @@ function buildReuseComponents(done) {
 					gulpif(
 						"**/*.xml",
 						prettydata({
-							type: "minify"
+							type: "prettify",
 						})
 					)
 				)
 				.pipe(
 					ui5Preload({
-						prefix: `${APPNAMESPACE}/reuse/${reuseComponent}`
+						prefix: `${APPNAMESPACE}/reuse/${reuseComponent}`,
 					})
 				)
 				.pipe(gulp.dest(`${DIST}/reuse/${reuseComponent}/`))
@@ -145,7 +145,7 @@ function buildReuseComponents(done) {
 		return buildPreload
 	})
 
-	const reuseTasksDone = seriesDone => {
+	const reuseTasksDone = (seriesDone) => {
 		seriesDone()
 		done()
 	}
@@ -168,7 +168,7 @@ gulp.task("💾 copy:dist:minified", () => {
 			gulpif(
 				"**/*.xml",
 				prettydata({
-					type: "minify"
+					type: "minify",
 				})
 			)
 		)
@@ -179,7 +179,7 @@ gulp.task("💾 copy:dist:dbg", () => {
 	return gulp
 		.src([`${BUILD}/**/*.js`])
 		.pipe(
-			rename(filePath => {
+			rename((filePath) => {
 				let name = filePath.basename.split(".")
 				name[0] += "-dbg"
 				filePath.basename = name.join(".")
@@ -188,7 +188,7 @@ gulp.task("💾 copy:dist:dbg", () => {
 		.pipe(gulp.dest(`${DIST}`))
 })
 
-gulp.task("✅ successMessage", cb => {
+gulp.task("✅ successMessage", (cb) => {
 	cb()
 	console.log(
 		"\x1b[32m%s\x1b[0m",
@@ -208,7 +208,7 @@ gulp.task(
 		"💾 copy:dist:minified",
 		"💾 copy:dist:dbg",
 		"🧹 clean:build",
-		"✅ successMessage"
+		"✅ successMessage",
 	])
 )
 
