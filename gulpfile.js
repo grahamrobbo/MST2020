@@ -221,22 +221,3 @@ gulp.task(
 gulp.task("watch", () => {
 	return watch(`${SRC}/**/*`, gulp.series(["dist"]))
 })
-
-gulp.task("test", () => {
-	return (
-		gulp
-			.src([`${SRC}/**/**.xml`])
-			.pipe(
-				gulpif(
-					"**/*.xml",
-					prettydata({
-						type: "minify",
-					})
-				)
-			)
-			.pipe(gulpif("**/*.xml", replace("\n", "")))
-			.pipe(gulpif("**/*.xml", replace("\t", "")))
-			//.pipe(replace("yelcho/dp/app/", "yelcho/dp/"))
-			.pipe(gulp.dest(`${DIST}`))
-	)
-})
