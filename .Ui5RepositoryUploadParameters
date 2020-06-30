@@ -2,6 +2,6 @@ SAPUI5ApplicationName=YMST2020
 SAPUI5ApplicationPackage=YMST2020
 SAPUI5ApplicationDescription=Mastering SAP 2020 Sample App
 WorkbenchRequest=NPLK900077
-ExternalCodePage=utf-8
+ExternalCodePage=Cp1252
 AcceptUnixStyleEol=True
 DeltaMode=False
