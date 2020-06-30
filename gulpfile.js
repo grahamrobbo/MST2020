@@ -9,7 +9,7 @@ const gulpif = require("gulp-if")
 const uglify = require("gulp-uglify-es").default
 const prettydata = require("gulp-pretty-data")
 const ui5Preload = require("gulp-openui5-preload")
-//const replace = require("gulp-replace")
+const replace = require("gulp-replace")
 const fs = require("fs")
 const rename = require("gulp-rename")
 const watch = require("gulp-watch")
@@ -96,10 +96,12 @@ gulp.task("preload:main", () => {
 				gulpif(
 					"**/*.xml",
 					prettydata({
-						type: "prettify",
+						type: "minify",
 					})
 				)
 			)
+			.pipe(gulpif("**/*.xml", replace("\n", "")))
+			.pipe(gulpif("**/*.xml", replace("\t", "")))
 			.pipe(
 				ui5Preload({
 					prefix: `${APPNAMESPACE}`,
@@ -130,10 +132,12 @@ function buildReuseComponents(done) {
 					gulpif(
 						"**/*.xml",
 						prettydata({
-							type: "prettify",
+							type: "minify",
 						})
 					)
 				)
+				.pipe(gulpif("**/*.xml", replace("\n", "")))
+				.pipe(gulpif("**/*.xml", replace("\t", "")))
 				.pipe(
 					ui5Preload({
 						prefix: `${APPNAMESPACE}/reuse/${reuseComponent}`,
@@ -172,6 +176,8 @@ gulp.task("💾 copy:dist:minified", () => {
 				})
 			)
 		)
+		.pipe(gulpif("**/*.xml", replace("\n", "")))
+		.pipe(gulpif("**/*.xml", replace("\t", "")))
 		.pipe(gulp.dest(`${DIST}`))
 })
 
@@ -214,4 +220,23 @@ gulp.task(
 
 gulp.task("watch", () => {
 	return watch(`${SRC}/**/*`, gulp.series(["dist"]))
+})
+
+gulp.task("test", () => {
+	return (
+		gulp
+			.src([`${SRC}/**/**.xml`])
+			.pipe(
+				gulpif(
+					"**/*.xml",
+					prettydata({
+						type: "minify",
+					})
+				)
+			)
+			.pipe(gulpif("**/*.xml", replace("\n", "")))
+			.pipe(gulpif("**/*.xml", replace("\t", "")))
+			//.pipe(replace("yelcho/dp/app/", "yelcho/dp/"))
+			.pipe(gulp.dest(`${DIST}`))
+	)
 })
