@@ -102,6 +102,7 @@ gulp.task("preload:main", () => {
 			)
 			.pipe(gulpif("**/*.xml", replace("\n", "")))
 			.pipe(gulpif("**/*.xml", replace("\t", "")))
+			.pipe(gulpif("**/*.xml", replace("\r", "")))
 			.pipe(
 				ui5Preload({
 					prefix: `${APPNAMESPACE}`,
@@ -138,6 +139,7 @@ function buildReuseComponents(done) {
 				)
 				.pipe(gulpif("**/*.xml", replace("\n", "")))
 				.pipe(gulpif("**/*.xml", replace("\t", "")))
+				.pipe(gulpif("**/*.xml", replace("\r", "")))
 				.pipe(
 					ui5Preload({
 						prefix: `${APPNAMESPACE}/reuse/${reuseComponent}`,
@@ -178,6 +180,7 @@ gulp.task("💾 copy:dist:minified", () => {
 		)
 		.pipe(gulpif("**/*.xml", replace("\n", "")))
 		.pipe(gulpif("**/*.xml", replace("\t", "")))
+		.pipe(gulpif("**/*.xml", replace("\r", "")))
 		.pipe(gulp.dest(`${DIST}`))
 })
 

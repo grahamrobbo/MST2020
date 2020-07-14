@@ -4,4 +4,4 @@ SAPUI5ApplicationDescription=Mastering SAP 2020 Sample App
 WorkbenchRequest=NPLK900077
 ExternalCodePage=Cp1252
 AcceptUnixStyleEol=True
-DeltaMode=False
+DeltaMode=True
