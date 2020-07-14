@@ -1,18 +1,18 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function (
 	Controller,
 	Log
 ) {
 	return Controller.extend(
 		"yelcho.sample.RoutingNestedComponent.reuse.suppliers.controller.Detail",
 		{
-			onInit: function() {
+			onInit: function () {
 				this.getOwnerComponent()
 					.getRouter()
 					.getRoute("detail")
 					.attachMatched(this._onMatched, this)
 			},
 
-			_onMatched: function(oEvent) {
+			_onMatched: function (oEvent) {
 				Log.info(this.getView().getControllerName(), "_onMatched")
 				var oArgs = oEvent.getParameter("arguments")
 
@@ -22,7 +22,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 					.then(this._bindData.bind(this, oArgs.id))
 			},
 
-			_bindData: function(id) {
+			_bindData: function (id) {
 				Log.info(this.getView().getControllerName(), "_bindData")
 
 				var sObjectPath = this.getOwnerComponent()
@@ -32,18 +32,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 				this.getView().bindElement({
 					path: "/" + sObjectPath,
 					events: {
-						change: function() {
+						change: function () {
 							Log.info(this.getView().getControllerName(), "_bindData change")
 							this.getView().setBusy(false)
 						}.bind(this),
-						dataRequested: function() {
+						dataRequested: function () {
 							Log.info(
 								this.getView().getControllerName(),
 								"_bindData dataRequested"
 							)
 							this.getView().setBusy(true)
 						}.bind(this),
-						dataReceived: function() {
+						dataReceived: function () {
 							Log.info(
 								this.getView().getControllerName(),
 								"_bindData dataReceived"
@@ -54,10 +54,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 									.getRouter()
 									.getTargets()
 									.display("notFound")
-						}.bind(this)
-					}
+						}.bind(this),
+					},
 				})
-			}
+			},
 		}
 	)
 })
