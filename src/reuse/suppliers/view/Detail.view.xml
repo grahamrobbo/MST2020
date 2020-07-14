@@ -16,7 +16,6 @@
 			<f:Form id="FormDisplay354" 
 				editable="false">
 				<f:title>
-					<!-- ISSUE #10 Replace title with Supplier Name -->
 					<core:Title text="{CompanyName}" />
 				</f:title>
 				<f:layout>
