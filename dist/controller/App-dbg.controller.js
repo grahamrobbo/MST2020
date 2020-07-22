@@ -1,11 +1,23 @@
 sap.ui.define(
-	["yelcho/sample/RoutingNestedComponent/base/BaseController", "sap/base/Log"],
-	function(Controller, Log) {
+	[
+		"yelcho/sample/RoutingNestedComponent/base/BaseController",
+		"sap/ui/model/json/JSONModel",
+		"sap/base/Log",
+	],
+	function (Controller, JSONModel, Log) {
 		return Controller.extend(
 			"yelcho.sample.RoutingNestedComponent.controller.App",
 			{
-				onInit: function() {
+				onInit: function () {
 					Log.info(this.getView().getControllerName(), "onInit")
+
+					var oTitlesModel = new JSONModel()
+					this.getView().setModel(oTitlesModel, "titleModel")
+					this.getOwnerComponent()
+						.getRouter()
+						.attachTitleChanged(function (oEvent) {
+							oTitlesModel.setData(oEvent.getParameters())
+						})
 
 					this.getOwnerComponent()
 						.getRouter()
@@ -15,7 +27,7 @@ sap.ui.define(
 						.attachBypassed(this._onBypassed, this)
 				},
 
-				_onRouteMatched: function(oEvent) {
+				_onRouteMatched: function (oEvent) {
 					Log.info(this.getView().getControllerName(), "_onRouteMatched")
 					var oConfig = oEvent.getParameter("config")
 
@@ -23,11 +35,11 @@ sap.ui.define(
 					this.setSelectedMenuItem(oConfig.name)
 				},
 
-				setSelectedMenuItem: function(sKey) {
+				setSelectedMenuItem: function (sKey) {
 					this.byId("navigationList").setSelectedKey(sKey)
 				},
 
-				_onBypassed: function(oEvent) {
+				_onBypassed: function (oEvent) {
 					var sHash = oEvent.getParameter("hash")
 					Log.info(
 						this.getView().getControllerName(),
@@ -35,17 +47,15 @@ sap.ui.define(
 					)
 				},
 
-				onItemSelect: function(oEvent) {
+				onItemSelect: function (oEvent) {
 					var sKey = oEvent.getParameter("item").getKey()
 					Log.info(
 						this.getView().getControllerName(),
 						"onItemSelect Key=" + sKey
 					)
 
-					this.getOwnerComponent()
-						.getRouter()
-						.navTo(sKey)
-				}
+					this.getOwnerComponent().getRouter().navTo(sKey)
+				},
 			}
 		)
 	}

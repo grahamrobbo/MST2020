@@ -100,9 +100,9 @@ gulp.task("preload:main", () => {
 					})
 				)
 			)
-			.pipe(gulpif("**/*.xml", replace("\n", "")))
-			.pipe(gulpif("**/*.xml", replace("\t", "")))
-			.pipe(gulpif("**/*.xml", replace("\r", "")))
+			.pipe(gulpif("**/*.xml", replace("\n", " ")))
+			.pipe(gulpif("**/*.xml", replace("\t", " ")))
+			// .pipe(gulpif("**/*.xml", replace("\r", "")))
 			.pipe(
 				ui5Preload({
 					prefix: `${APPNAMESPACE}`,
@@ -137,9 +137,9 @@ function buildReuseComponents(done) {
 						})
 					)
 				)
-				.pipe(gulpif("**/*.xml", replace("\n", "")))
-				.pipe(gulpif("**/*.xml", replace("\t", "")))
-				.pipe(gulpif("**/*.xml", replace("\r", "")))
+				.pipe(gulpif("**/*.xml", replace("\n", " ")))
+				.pipe(gulpif("**/*.xml", replace("\t", " ")))
+				// .pipe(gulpif("**/*.xml", replace("\r", "")))
 				.pipe(
 					ui5Preload({
 						prefix: `${APPNAMESPACE}/reuse/${reuseComponent}`,
@@ -167,21 +167,23 @@ gulp.task(
 )
 
 gulp.task("💾 copy:dist:minified", () => {
-	return gulp
-		.src([`${BUILD}/**/*`])
-		.pipe(gulpif("**/*.js", uglify()))
-		.pipe(
-			gulpif(
-				"**/*.xml",
-				prettydata({
-					type: "minify",
-				})
+	return (
+		gulp
+			.src([`${BUILD}/**/*`])
+			.pipe(gulpif("**/*.js", uglify()))
+			.pipe(
+				gulpif(
+					"**/*.xml",
+					prettydata({
+						type: "minify",
+					})
+				)
 			)
-		)
-		.pipe(gulpif("**/*.xml", replace("\n", "")))
-		.pipe(gulpif("**/*.xml", replace("\t", "")))
-		.pipe(gulpif("**/*.xml", replace("\r", "")))
-		.pipe(gulp.dest(`${DIST}`))
+			.pipe(gulpif("**/*.xml", replace("\n", " ")))
+			.pipe(gulpif("**/*.xml", replace("\t", " ")))
+			// .pipe(gulpif("**/*.xml", replace("\r", "")))
+			.pipe(gulp.dest(`${DIST}`))
+	)
 })
 
 gulp.task("💾 copy:dist:dbg", () => {
