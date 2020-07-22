@@ -1,3 +1,5 @@
+![mastering sap logo](img/mastering-sap-logo.png)
+
 # MST2020
 
 Supporting material for the Mastering SAP Technologies 2020 session about my SAPUI5 development environment and workflow.
