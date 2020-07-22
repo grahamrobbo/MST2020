@@ -78,7 +78,8 @@
 				"bypassed": {
 					"target": "notFound"
 				},
-				"async": true
+				"async": true,
+				"propagateTitle": true
 			},
 			"routes": [
 				{
@@ -116,22 +117,22 @@
 					"type": "View",
 					"id": "home",
 					"name": "Home",
-					"title": "Home"
+					"title": "Component Based Navigation Demo"
 				},
 				"suppliers": {
 					"type": "Component",
 					"usage": "suppliersComponent",
-					"title": "Supplier"
+					"title": "A"
 				},
 				"categories": {
 					"type": "Component",
 					"usage": "categoriesComponent",
-					"title": "Category"
+					"title": "B"
 				},
 				"products": {
 					"type": "Component",
 					"usage": "productsComponent",
-					"title": "Product"
+					"title": "C"
 				},
 				"notFound": {
 					"type": "View",
