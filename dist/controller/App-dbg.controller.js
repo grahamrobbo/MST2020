@@ -11,13 +11,17 @@ sap.ui.define(
 				onInit: function () {
 					Log.info(this.getView().getControllerName(), "onInit")
 
-					var oTitlesModel = new JSONModel()
+					var oTitlesModel = new JSONModel({
+						title: "Component Based Navigation Demo",
+					})
 					this.getView().setModel(oTitlesModel, "titleModel")
-					this.getOwnerComponent()
-						.getRouter()
-						.attachTitleChanged(function (oEvent) {
-							oTitlesModel.setData(oEvent.getParameters())
-						})
+					// TODO #19 Use titleChanged event to set page title
+					// this.getOwnerComponent()
+					// 	.getRouter()
+					// 	.attachTitleChanged(function (oEvent) {
+					// 		oTitlesModel.setData(oEvent.getParameters())
+					// 		document.title = oEvent.getParameter("title")
+					// 	})
 
 					this.getOwnerComponent()
 						.getRouter()
