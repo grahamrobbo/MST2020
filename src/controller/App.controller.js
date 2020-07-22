@@ -15,6 +15,7 @@ sap.ui.define(
 						title: "Component Based Navigation Demo",
 					})
 					this.getView().setModel(oTitlesModel, "titleModel")
+					// TODO #19 Use titleChanged event to set page title
 					// this.getOwnerComponent()
 					// 	.getRouter()
 					// 	.attachTitleChanged(function (oEvent) {
