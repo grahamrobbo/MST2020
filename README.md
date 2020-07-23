@@ -2,19 +2,23 @@
 
 # Building and Deploying SAPUI5 Applications
 
-This repository contains the supporting material for the Mastering SAP Technologies 2020 session about my SAPUI5 development environment and workflow.
+This repository contains the supporting material for the Mastering SAP Technologies 2020 session about my [SAPUI5](https://sapui5.hana.ondemand.com/) development environment and workflow.
 
 It also contains the sample UI5 application used in the demos.
+
+_Caveat - my development environment is constantly changing. This content was accurate as at the middle of July 2020. It will have almost certainly changed by now._
 
 Enjoy!
 
 ![robbo](img/robbo.png)
 
+---
+
 ## My SAPUI5 Development Environment
 
-| ![git Logo](img/git.png)             | https://git-scm.com/                                                                                                                                                                                                                                              |
+|                                      |                                                                                                                                                                                                                                                                   |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![node.js Logo](img/node.png)        | **https://nodejs.org**                                                                                                                                                                                                                                            |
+| ![git Logo](img/git.png)             | **https://git-scm.com/**                                                                                                                                                                                                                                          | ![node.js Logo](img/node.png) | **https://nodejs.org** |
 | ![nginx Logo](img/nginx.png)         | **http://nginx.org/**                                                                                                                                                                                                                                             |
 | ![VSCode Logo](img/VSCode.png)       | **https://code.visualstudio.com/**                                                                                                                                                                                                                                |
 | ![gulp Logo](img/gulp.png)           | **https://gulpjs.com/**                                                                                                                                                                                                                                           |
@@ -39,7 +43,7 @@ I use a subdirectory called `Sites` located in my home directory as the root dir
 
 The nginx configuration contains the following setting to reflect this.
 
-```json
+```
         location / {
             root   /Users/robbo/Sites;
             index  index.html index.htm;
@@ -52,7 +56,7 @@ The `add_header` setting ensures that everything served up from that location wi
 
 The nginx configuration also needs to set up the reverse proxy for your SAP backend server.
 
-```json
+```
        location /sap {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
@@ -66,7 +70,7 @@ The nginx configuration also needs to set up the reverse proxy for your SAP back
 
 For websockets support add the following HTTP config setting so that nginx wil acrt as a websocket proxy.
 
-```json
+```
     upstream websocket {
         server was.yelcho.com.au:8443;
     }
@@ -74,7 +78,7 @@ For websockets support add the following HTTP config setting so that nginx wil a
 
 My complete `nginx.conf` file looks like this.
 
-```json
+```
     worker_processes  1;
 
     events {
