@@ -29,13 +29,11 @@ _\* Note: The VSCode developers have been working over the last couple of months
 
 ---
 
-The video shows how I would setup my development environment on a Windows machine. The process is almost identical for macOS.
+### Setup video
 
-### Put video here
+This video shows how I would setup my development environment on a Windows machine. The process is almost identical for macOS.
 
-TODO: Put in correct video
-
-[![Setup development environment](img/clone.jpg)](https://youtu.be/l2JEKBvxwDQ "Setup development environment")
+[![Setup development environment](img/install.png)](https://youtu.be/de6EdGJCj3I)
 
 ## Other notes
 
