@@ -16,12 +16,13 @@ sap.ui.define(
 					})
 					this.getView().setModel(oTitlesModel, "titleModel")
 
-					this.getOwnerComponent()
-						.getRouter()
-						.attachTitleChanged(function (oEvent) {
-							oTitlesModel.setData(oEvent.getParameters())
-							document.title = oEvent.getParameter("title")
-						})
+					// this.getOwnerComponent()
+					// 	.getRouter()
+					// 	.attachTitleChanged(function (oEvent) {
+					// 		var notUsed
+					// 		oTitlesModel.setData(oEvent.getParameters())
+					// 		document.title = oEvent.getParameter("title")
+					// 	})
 
 					this.getOwnerComponent()
 						.getRouter()
