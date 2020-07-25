@@ -125,6 +125,7 @@
 					"type": "View",
 					"id": "notFound",
 					"name": "NotFound",
+					"title": "Supplier Not Found",
 					"transition": "show"
 				}
 			}

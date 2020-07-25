@@ -125,6 +125,7 @@
 					"type": "View",
 					"id": "notFound",
 					"name": "NotFound",
+					"title": "Category Not Found",
 					"transition": "show"
 				}
 			}

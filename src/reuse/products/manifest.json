@@ -106,6 +106,7 @@
 					"type": "View",
 					"id": "notFound",
 					"name": "NotFound",
+					"title": "Product Not Found",
 					"transition": "show"
 				}
 			}
