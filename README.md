@@ -4,9 +4,9 @@
 
 This repository contains the supporting material for the Mastering SAP Technologies 2020 session about my [SAPUI5](https://sapui5.hana.ondemand.com/) development environment and workflow.
 
-It also contains the sample UI5 application used in the demos.
+This includes the sample UI5 application which showcases techniques for 'componentising' a UI5 application.
 
-_Caveat - my development environment is constantly changing and hopefully improving. This content was accurate as at the middle of July 2020. It will have almost certainly changed by now._
+_Caveat - my development environment is constantly changing and hopefully improving. This repo shows how it looked around the middle of July 2020. It may have changed by the time you get here._
 
 Enjoy!
 
@@ -161,4 +161,7 @@ If possible I usually setup a [Github webhook](https://docs.github.com/en/develo
 
 If this is not possible the SAPUI5-Deployer ABAP program can be scheduled to regularly poll the repository and trigger a deployment when changes are detected.
 
-![rocketship](img/rocketship.png)
+---
+
+[![rescue](img/rescue.png)
+_Relief of the party on Elephant Island by Chilean tug Yelcho - Photo by Frank Hurley - used with permission_](https://geographical.co.uk/people/explorers/item/1875-on-this-day-1916-shackleton-rescues-his-crew)
