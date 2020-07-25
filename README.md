@@ -1,12 +1,12 @@
 ![mastering sap logo](img/mastering-sap-logo.png)
 
-# Building and Deploying SAPUI5 Applications
+# Continuously Building and Deploying SAPUI5 Applications
 
 This repository contains the supporting material for the Mastering SAP Technologies 2020 session about my [SAPUI5](https://sapui5.hana.ondemand.com/) development environment and workflow.
 
 It also contains the sample UI5 application used in the demos.
 
-_Caveat - my development environment is constantly changing. This content was accurate as at the middle of July 2020. It will have almost certainly changed by now._
+_Caveat - my development environment is constantly changing and hopefully improving. This content was accurate as at the middle of July 2020. It will have almost certainly changed by now._
 
 Enjoy!
 
@@ -15,6 +15,8 @@ Enjoy!
 ---
 
 ## My SAPUI5 Development Environment
+
+These are the software components I use to build my development environment on a new machine. All these components are cross-platform and freely available.
 
 |                                      |                                                                                                                                                                                                                                                                   |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +33,7 @@ _\* Note: The VSCode developers have been working over the last couple of months
 
 ### Setup video
 
-This video shows how I would setup my development environment on a Windows machine. The process is almost identical for macOS.
+The following video shows how I would setup my development environment on a newly installed Windows machine. The process is almost identical for macOS.
 
 [![Setup development environment](img/install.png)](https://youtu.be/de6EdGJCj3I)
 
@@ -50,7 +52,7 @@ The nginx configuration contains the following setting to reflect this.
         }
 ```
 
-The `add_header` setting ensures that everything served up from that location will not be cached in the browser.
+The `add_header Cache-Control` setting ensures that everything served up from this location will not be cached in the browser.
 
 The nginx configuration also needs to set up the reverse proxy for your SAP backend server.
 
@@ -66,7 +68,7 @@ The nginx configuration also needs to set up the reverse proxy for your SAP back
        }
 ```
 
-For websockets support add the following HTTP config setting so that nginx wil acrt as a websocket proxy.
+For websockets support add the following HTTP config setting so that nginx will act as a websocket proxy.
 
 ```
     upstream websocket {
@@ -123,7 +125,7 @@ My complete `nginx.conf` file looks like this.
     }
 ```
 
-Finally the VSCode projectManage extension needs to know where to look for git projects. This is set in the _settings.json_ file.
+Finally the VSCode Project Manager extension needs to know where to look for git projects. This is set in the _settings.json_ file.
 
 ```json
     "projectManager.git.baseFolders": [
@@ -137,7 +139,7 @@ To start work on a project just clone the repo to the `Sites` directory and exec
 
 ![clone project](img/project-clone.gif)
 
-To prepare a project for deployment execute the command `gulp dist` - or even better configure it as the default build task in VSCode.
+To prepare a project for deployment execute the command `gulp dist` - or even better configure it as the default build task in VSCode so it is just a key sequence away.
 
 ![gulp dist](img/gulp-dist.gif)
 
