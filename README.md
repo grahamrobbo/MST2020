@@ -170,11 +170,15 @@ If this is not possible the SAPUI5-Deployer ABAP program can be scheduled to reg
 
 ### Developer Workflow
 
-This video takes the development enviroment as created above and shows a typical task of building, testing and deploying a fix.
+The following video takes the development enviroment we created above and walks through a typical developer workflow of building, testing and deploying a fix.
 
 [![Setup development environment](img/build.png)](https://youtu.be/TP7VluwCboU)
 
----
+I hope you find this information useful.
+
+Cheers,
+
+Graham Robbo
 
 ---
 
