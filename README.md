@@ -4,7 +4,14 @@
 
 This repository contains the supporting material for the Mastering SAP Technologies 2020 session about my [SAPUI5](https://sapui5.hana.ondemand.com/) development environment and workflow.
 
-This includes the sample UI5 application which showcases techniques for 'componentising' a UI5 application.
+My session didn't make it onto the final agenda but the recodings can be found here too. I was briefed to keep the video to just 10 minutes which would be used to kick-off further discussion around the issues.
+
+Here you will find
+
+- an "intro" 10 minute video showing how I would setup my development environment on a new machine
+- supporting notes to help you understand and possibly copy the showcased development environment
+- the sample UI5 application which showcases techniques for 'componentising' a UI5 application.
+- the actual 10 minute video that shows my development workflow taking an issue then resolving it, testing it and deploying the new code to the backend ABAP server
 
 _Caveat - my development environment is constantly changing and hopefully improving. This repo shows how it looked around the middle of July 2020. It may have changed by the time you get here._
 
@@ -155,11 +162,19 @@ SAPUI5-Deployer is a solution for deploying SAPUI5 and OpenUI5 web apps to a SAP
 
 SAPUI5-Deployer can be implemented by the an ABAP developer in minutes, in most cases without the need for any infrastructure changes, whilst conforming to existing change management policies and procedures.
 
-If possible I usually setup a [Github webhook](https://docs.github.com/en/developers/webhooks-and-events/about-webhooks) to trigger deployment whenever a push to the repository event is fired.
+If possible I like to setup a [Github webhook](https://docs.github.com/en/developers/webhooks-and-events/about-webhooks) to trigger deployment whenever a push to the repository event is fired.
 
 ![webhook](img/webhook.png)
 
 If this is not possible the SAPUI5-Deployer ABAP program can be scheduled to regularly poll the repository and trigger a deployment when changes are detected.
+
+### Developer Workflow
+
+This video takes the development enviroment as created above and shows a typical task of building, testing and deploying a fix.
+
+[![Setup development environment](img/build.png)](https://youtu.be/TP7VluwCboU)
+
+---
 
 ---
 
