@@ -4,14 +4,14 @@
 
 This repository contains the supporting material for the Mastering SAP Technologies 2020 session about my [SAPUI5](https://sapui5.hana.ondemand.com/) development environment and workflow.
 
-My session didn't make it onto the final agenda but the recodings can be found here too. I was briefed to keep the video to just 10 minutes which would be used to kick-off further discussion around the issues.
+My session didn't make it onto the final agenda but the recodings and supporting material can be found here. I was briefed to keep the video to just 10 minutes which was to be used to kick-off further discussion around the issues.
 
 Here you will find
 
-- an "intro" 10 minute video showing how I would setup my development environment on a new machine
+- an ["intro" 10 minute video](https://youtu.be/NGhklCEDQA4) showing how I would setup my development environment on a new machine. There is no editing of this vide. The whole process takes - you guessed it - 10 minutes.
 - supporting notes to help you understand and possibly copy the showcased development environment
 - the sample UI5 application which showcases techniques for 'componentising' a UI5 application.
-- the actual 10 minute video that shows my development workflow taking an issue then resolving it, testing it and deploying the new code to the backend ABAP server
+- the [actual 10 minute presentation video](https://youtu.be/TP7VluwCboU) that shows my development workflow by taking an issue, resolving it, testing it and deploying the new code to the backend ABAP server
 
 _Caveat - my development environment is constantly changing and hopefully improving. This repo shows how it looked around the middle of July 2020. It may have changed by the time you get here._
 
@@ -34,7 +34,7 @@ These are the software components I use to build my development environment on a
 | ![settings Logo](img/settings.png)   | **[Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)** VSCode extension from [Shan Khan](https://marketplace.visualstudio.com/publishers/Shan) to bring across my VSCode preferences - i.e. extensions and settings. \* |
 | ![fira-code Logo](img/fira-code.png) | **https://github.com/tonsky/FiraCode** Fira Code font from Nikita Prokopov [@nikitonsky](https://twitter.com/nikitonsky) - a free monospaced font containing ligatures for common programming multi-character combinations.                                       |
 
-_\* Note: The VSCode developers have been working over the last couple of months to support synchronising VS Code preferences across machines. By the time you are reading this the settings synchronisation feature will probably be part of the standard VSCode distribution and this extension will not be required._
+_\* Note: There is now a "Settings Sync" feature built into VSCode so this extension is no longer required._
 
 ---
 
@@ -59,9 +59,9 @@ The nginx configuration contains the following setting to reflect this.
         }
 ```
 
-The `add_header Cache-Control` setting ensures that everything served up from this location will not be cached in the browser.
+The `add_header Cache-Control "no-store, no-cache, must-revalidate"` setting ensures that everything served up from this location will not be cached in the browser.
 
-The nginx configuration also needs to set up the reverse proxy for your SAP backend server.
+The nginx configuration also needs to be configured to act as a reverse proxy for calls to the SAP backend server.
 
 ```
        location /sap {
@@ -75,7 +75,7 @@ The nginx configuration also needs to set up the reverse proxy for your SAP back
        }
 ```
 
-For websockets support add the following HTTP config setting so that nginx will act as a websocket proxy.
+If you require websocket support add the following HTTP config setting so that nginx will act as a websocket proxy.
 
 ```
     upstream websocket {
