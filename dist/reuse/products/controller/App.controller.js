@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],(function(e){return e.extend("yelcho.sample.RoutingNestedComponent.reuse.products.controller.App",{})}));

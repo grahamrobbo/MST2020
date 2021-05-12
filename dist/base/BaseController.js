@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/base/Log"],(function(e,n){return e.extend("yelcho.sample.RoutingNestedComponent.base.BaseController",{onInit:function(){n.info(this.getView().getControllerName(),"onInit")},northwindImageFormatter:function(e){return e?"data:image/bmp;base64,"+e.substr(104):null}})}));
