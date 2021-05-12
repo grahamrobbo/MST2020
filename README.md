@@ -1,4 +1,4 @@
-![mastering sap logo](img/mastering-sap-logo.png)
+![mastering sap logo](img/mst2021_banner.png)
 
 # Continuously Building and Deploying SAPUI5 Applications
 
@@ -6,7 +6,9 @@ This repository contains the supporting material for the Mastering SAP Technolog
 
 My session didn't make it onto the final agenda but the recodings and supporting material can be found here. I was briefed to keep the video to just 10 minutes which was to be used to kick-off further discussion around the issues.
 
-Here you will find
+In May 2021 I was asked to present this content at Mastering SAP Technologies South Africa. I hope this new audience find this useful.
+
+In this repository you will find
 
 - an ["intro" 10 minute video](https://youtu.be/NGhklCEDQA4) showing how I would setup my development environment on a new machine. There is no editing of this vide. The whole process takes - you guessed it - 10 minutes.
 - supporting notes to help you understand and possibly copy the showcased development environment
@@ -27,7 +29,8 @@ These are the software components I use to build my development environment on a
 
 |                                      |                                                                                                                                                                                                                                                                   |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![git Logo](img/git.png)             | **https://git-scm.com/**                                                                                                                                                                                                                                          | ![node.js Logo](img/node.png) | **https://nodejs.org** |
+| ![git Logo](img/git.png)             | **https://git-scm.com/**                                                                                                                                                                                                                                          |
+| ![node.js Logo](img/node.png)        | **https://nodejs.org**                                                                                                                                                                                                                                            |
 | ![nginx Logo](img/nginx.png)         | **http://nginx.org/**                                                                                                                                                                                                                                             |
 | ![VSCode Logo](img/vscode.png)       | **https://code.visualstudio.com/**                                                                                                                                                                                                                                |
 | ![gulp Logo](img/gulp.png)           | **https://gulpjs.com/**                                                                                                                                                                                                                                           |
@@ -44,7 +47,7 @@ The following video shows how I would setup my development environment on a newl
 
 [![Setup development environment](img/install.png)](https://youtu.be/NGhklCEDQA4)
 
-## Other notes
+## Setup notes
 
 I use a subdirectory called `Sites` located in my home directory as the root directory for all my projects.
 
@@ -136,7 +139,7 @@ Finally the VSCode Project Manager extension needs to know where to look for git
 
 ```json
     "projectManager.git.baseFolders": [
-      "/users/robbo/Sites",
+      "$home\Sites",
     ],
 ```
 
@@ -149,6 +152,8 @@ To start work on a project just clone the repo to the `Sites` directory and exec
 To prepare a project for deployment execute the command `gulp dist` - or even better configure it as the default build task in VSCode so it is just a key sequence away.
 
 ![gulp dist](img/gulp-dist.gif)
+
+_\*Note - The sample application I use is a good example of how to break a UI5 application into multiple components and route between them. You can also find a similar sample in the SAPUI5 SDK at [https://sapui5.hana.ondemand.com/#/entity/sap.ui.core.routing.Router/sample/sap.ui.core.sample.RoutingNestedComponent](https://sapui5.hana.ondemand.com/#/entity/sap.ui.core.routing.Router/sample/sap.ui.core.sample.RoutingNestedComponent)._
 
 ---
 
